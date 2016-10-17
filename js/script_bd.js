@@ -225,6 +225,14 @@ var createTrBlock = {
 		d.appendChild(title);
 		d.appendChild(ul);
 		document.getElementById('translate-title').innerHTML = txt;
+		d.addEventListener("mouseup", function(event){
+			event.stopPropagation();
+			event.preventDefault();
+		}, false);
+		d.addEventListener("mousedown", function(event){
+			event.stopPropagation();
+			event.preventDefault();
+		}, false);
 		vote(d,txt);
 		this.on = true;
 	},
@@ -245,13 +253,7 @@ window.onload=function(){
 			selection.getText(event);
 		}, false);
 		block.addEventListener("mousedown", function(event){
-			var d = document.getElementById('translate-block');
 			createTrBlock.remove();
-			for(var k in event.path){
-				if(event.path[k] == d) {selection.getText(event);}
-				
-			}
-			if(event.target == d) {selection.getText(event);}
 		}, false);
 	}
 	else{
